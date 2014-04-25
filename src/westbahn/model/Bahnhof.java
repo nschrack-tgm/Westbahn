@@ -2,25 +2,32 @@ package westbahn.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
 public class Bahnhof {
-
-	@Id
-	private Long ID;
 	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private Long ID;
+
 	@Column(unique=true)
 	private String name;
+
 	private int absPreisEntfernung;
+
 	private int absKmEntfernung;
+
 	private int absZeitEntfernung;
+
 	private boolean kopfBahnhof;
 
-	public Bahnhof(){
+	public Bahnhof() {
 		
 	}
-	
+
 	public Long getID() {
 		return ID;
 	}
@@ -68,4 +75,6 @@ public class Bahnhof {
 	public void setKopfBahnhof(boolean kopfBahnhof) {
 		this.kopfBahnhof = kopfBahnhof;
 	}
+	
+	
 }

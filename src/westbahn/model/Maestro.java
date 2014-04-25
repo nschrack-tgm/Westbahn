@@ -1,5 +1,6 @@
 package westbahn.model;
 
+
 public class Maestro implements Zahlung {
 
 

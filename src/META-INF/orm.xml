@@ -3,6 +3,12 @@
 	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm orm_1_0.xsd"
 	version="1.0">
 	<entity class="westbahn.model.Reservierung">
-		<!-- implement here -->
+		<attributes>
+			<id name="ID" />
+			<one-to-one name="zug" />
+			<one-to-one name="strecke" />
+			<one-to-one name="benutzer" />
+			<embedded name="zahlung" />
+		</attributes>
 	</entity>
 </entity-mappings>

@@ -3,23 +3,36 @@ package westbahn.model;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 public class Sonderangebot {
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long ID;
+
 	private int kontingent = 999;
+
+	@Temporal(TemporalType.DATE)
 	private Date startZeit;
+
 	private int dauer = 12;
+
 	private float preisNachlass = 0.5f;
+
 	@OneToOne(optional=false)
 	private Ticket tickets;
 
-	public Sonderangebot(){
-		
+	
+	
+	public Sonderangebot() {
+
 	}
 
 	public Long getID() {
@@ -69,4 +82,6 @@ public class Sonderangebot {
 	public void setTickets(Ticket tickets) {
 		this.tickets = tickets;
 	}
+	
+	
 }

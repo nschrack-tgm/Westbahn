@@ -14,19 +14,36 @@ public class Zeitkarte extends Ticket {
 
 	@Temporal(TemporalType.DATE)
 	private Date gueltigAb;
-	@Enumerated(value=EnumType.STRING)
+	
+	@Temporal(TemporalType.DATE)
+	private transient Date gueltigBis;
+
+	
 	private ZeitkartenTyp typ;
+
 	
-	public Zeitkarte(){}
-	
+	public Date getGueltigBis() {
+		return gueltigBis;
+	}
+
+	public void setGueltigBis(Date gueltigBis) {
+		this.gueltigBis = gueltigBis;
+	}
+
 	public Date getGueltigAb() {
 		return gueltigAb;
 	}
+
+	public Zeitkarte() {
+		
+	}
+
 	public void setGueltigAb(Date gueltigAb) {
 		this.gueltigAb = gueltigAb;
 	}
-
-	@Column(name="Zeitkartentyp") 
+	
+	@Column(name="ZeitkartenTyp") 
+	@Enumerated(EnumType.ORDINAL)
 	public ZeitkartenTyp getTyp() {
 		return typ;
 	}
@@ -34,5 +51,5 @@ public class Zeitkarte extends Ticket {
 	public void setTyp(ZeitkartenTyp typ) {
 		this.typ = typ;
 	}
-	
+
 }
