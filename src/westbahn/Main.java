@@ -10,6 +10,7 @@ import javax.persistence.Persistence;
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 
+<<<<<<< HEAD
 import westbahn.model.Bahnhof;
 import westbahn.model.Benutzer;
 import westbahn.model.Einzelticket;
@@ -25,6 +26,9 @@ import westbahn.query.Queries;
 
 import java.util.Date;
 
+=======
+import westbahn.query.Queries;
+>>>>>>> 629e7bcef21b616156814324bb9dcbbba5c17cc7
 
 
 public class Main {
