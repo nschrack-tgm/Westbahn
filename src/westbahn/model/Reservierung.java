@@ -80,8 +80,6 @@ public class Reservierung {
 		this.benutzer = benutzer;
 	}
 
-//	@Column(name="StatusInfo") 
-//	@Enumerated(EnumType.ORDINAL) 
 	public StatusInfo getStatus() { 
 		return status;
 	} 
