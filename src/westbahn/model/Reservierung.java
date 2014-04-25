@@ -2,35 +2,28 @@ package westbahn.model;
 
 import java.util.Date;
 
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
-
-@Entity
 public class Reservierung {
 
-	@Id
 	private Long ID;
+
 	private Date datum;
+
 	private int praemienMeilenBonus = 15;
+
 	private int preis = 150;
-	@Enumerated(value=EnumType.STRING)
-	private StatusInfo status;
-	@OneToOne(optional=false)
+
+	private StatusInfo status; 
+	
 	private Zug zug;
-	//Objekt von Strecke
+
 	private Strecke strecke;
-	@ManyToOne
+
 	private Benutzer benutzer;
-	@OneToOne(optional=false)
+
 	private Zahlung zahlung;
 
-	public Reservierung(){		
-	}
-	
+	public Reservierung() {	}
+
 	public Long getID() {
 		return ID;
 	}
@@ -63,14 +56,6 @@ public class Reservierung {
 		this.preis = preis;
 	}
 
-	public StatusInfo getStatus() {
-		return status;
-	}
-
-	public void setStatus(StatusInfo status) {
-		this.status = status;
-	}
-
 	public Zug getZug() {
 		return zug;
 	}
@@ -95,6 +80,16 @@ public class Reservierung {
 		this.benutzer = benutzer;
 	}
 
+//	@Column(name="StatusInfo") 
+//	@Enumerated(EnumType.ORDINAL) 
+	public StatusInfo getStatus() { 
+		return status;
+	} 
+	
+	public void setStatus(StatusInfo status) {
+		this.status = status;
+	}
+
 	public Zahlung getZahlung() {
 		return zahlung;
 	}
@@ -102,4 +97,6 @@ public class Reservierung {
 	public void setZahlung(Zahlung zahlung) {
 		this.zahlung = zahlung;
 	}
+
+	
 }

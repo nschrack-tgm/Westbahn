@@ -3,6 +3,8 @@ package westbahn.model;
 import java.util.Collection;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -10,29 +12,37 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 @NamedQueries({
-	@NamedQuery(name="getAllReservations",query="SELECT b FROM benutzer WHERE b.eMail = $1")
-	})
+	@NamedQuery(name="Benutzer.getAllReservations",query="FROM benutzer b WHERE b.eMail = :emailAdress"),
+	@NamedQuery(name="Benutzer.getAllBenutzer",query="FROM Benutzer b JOIN Ticket t WHERE t.typ ='MONATSKARTE'")
+})
 
 @Entity
 public class Benutzer {
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long ID;
+
 	private String vorName;
+
 	private String nachName;
+
 	private String eMail;
+
 	private String passwort;
+
 	private String smsNummer;
+
 	private Long verbuchtePraemienMeilen;
+
 	@OneToOne(optional=false)
 	private Ticket tickets;
+	
 	@OneToMany(mappedBy="benutzer")
 	private Collection<Reservierung> reservierungen;
- 
-	public Benutzer(){
-		
-	}
-	
+
+	public Benutzer() {	}
+
 	public Long getID() {
 		return ID;
 	}
@@ -104,4 +114,6 @@ public class Benutzer {
 	public void setReservierungen(Collection<Reservierung> reservierungen) {
 		this.reservierungen = reservierungen;
 	}
+
+	
 }

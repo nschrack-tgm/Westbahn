@@ -3,25 +3,36 @@ package westbahn.model;
 import java.util.Date;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 public class Zug {
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long ID;
+
+	@Temporal(TemporalType.DATE)
 	private Date startZeit;
+
 	private int sitzPlaetze = 500;
+
 	private int fahrradStellplaetze = 50;
+
 	private int rollStuhlPlaetze = 10;
+
 	@OneToOne(optional=false)
 	private Bahnhof start;
-	@OneToOne(optional=false)
+
+	@OneToOne(optional=false) 
 	private Bahnhof ende;
 
-	public Zug(){
-	}
+	public Zug() {	}
 
 	public Long getID() {
 		return ID;
@@ -78,4 +89,6 @@ public class Zug {
 	public void setEnde(Bahnhof ende) {
 		this.ende = ende;
 	}
+
+	
 }

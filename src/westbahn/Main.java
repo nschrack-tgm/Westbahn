@@ -1,24 +1,16 @@
 package westbahn;
 
-import westbahn.model.*;
-import westbahn.query.*;
-
-import java.math.BigDecimal;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
-import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
-import javax.persistence.Query;
 
 import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
-import org.hibernate.Session;
+
+import westbahn.query.Queries;
 
 
 public class Main {
@@ -28,11 +20,20 @@ public class Main {
 	static SimpleDateFormat dateForm = new SimpleDateFormat("dd.MM.yyyy");
 	static SimpleDateFormat timeForm = new SimpleDateFormat("dd.MM.yyyy mm:hh");
 
+	private static Queries query;
+	private static EntityManager entityManager;
+	
 	private Main() {
 		super();
 	}
 
 	public static void main(String[] args) {
+		
+		EntityManagerFactory entitymanagerfactory = Persistence.createEntityManagerFactory("westbahn");
+		entityManager = entitymanagerfactory.createEntityManager();
+		
+		query = new Queries(entityManager);
+		
 		log.setLevel(Level.ALL);
 		try {
 			log.info("Starting \"Mapping Perstistent Classes and Associations\" (task1)");
@@ -53,19 +54,19 @@ public class Main {
 	}
 
 	public static void task01() throws ParseException, InterruptedException {
-
+		
 	}
 
 	public static void task02a() throws ParseException {
-
+//		query.getAllBenutzer(emailAdress);
 	}
 
 	public static void task02b() throws ParseException {
-
+//		query.getAllReservations(emailAdress);
 	}
 
 	public static void task02c() throws ParseException {
-
+//		query.getTicketByStartEnd(start, end);
 	}
 
 }

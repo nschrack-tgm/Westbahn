@@ -1,29 +1,31 @@
 package westbahn.model;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 @Entity
+@Table(uniqueConstraints = {
+		@UniqueConstraint(columnNames = { "start_ID", "ende_ID" })
+})
 public class Strecke {
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long ID;
 
-	@Column(unique=true)
 	@OneToOne(optional=false)
 	private Bahnhof start;
 
-	//Keine Plan
-	private Bahnhof bahnhof;
-
-	@Column(unique=true)
 	@OneToOne(optional=false)
 	private Bahnhof ende;
+
+	public Strecke() {
 	
-	public Strecke(){
-		
 	}
 
 	public Long getID() {
@@ -40,14 +42,6 @@ public class Strecke {
 
 	public void setStart(Bahnhof start) {
 		this.start = start;
-	}
-
-	public Bahnhof getBahnhof() {
-		return bahnhof;
-	}
-
-	public void setBahnhof(Bahnhof bahnhof) {
-		this.bahnhof = bahnhof;
 	}
 
 	public Bahnhof getEnde() {

@@ -6,10 +6,10 @@
     	<properties>
 <!-- MySQL -->
   	 		<property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver" />
-  	 		<property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/westbahn" />
-   			<property name="hibernate.connection.username" value="westbahnUser" />
-   			<property name="hibernate.connection.password" value="westbahnPassword" />
-   			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQLInnoDBDialect" />
+  	 		<property name="hibernate.connection.url" value="jdbc:mysql://10.0.104.179:3306/westbahn" />
+   			<property name="hibernate.connection.username" value="hibernate" />
+   			<property name="hibernate.connection.password" value="hibernate" />
+   			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQL5InnoDBDialect" />
 
    			<property name="hibernate.show_sql" value="false" />
    			<property name="hibernate.hbm2ddl.auto" value="create"/>
